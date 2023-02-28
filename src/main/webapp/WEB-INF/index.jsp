@@ -115,7 +115,7 @@
                     <input type="password" class="login__input" placeholder="Password">
                 </div>
                 <button class="button login__submit">
-                    <a class="button__text" href="hello-servlet">Log In Now</a>
+                    <a class="button__text" href="login">Log In Now</a>
                 </button>
             </form>
         </div>

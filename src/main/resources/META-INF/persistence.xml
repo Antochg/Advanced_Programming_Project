@@ -5,10 +5,10 @@
              version="3.0">
     <persistence-unit name="default">
 
-        <class>model.CompanyEntity</class>
-        <class>model.InternshipEntity</class>
-        <class>model.StudentEntity</class>
-        <class>model.TutorEntity</class>
+        <class>model.entity.CompanyEntity</class>
+        <class>model.entity.InternshipEntity</class>
+        <class>model.entity.StudentEntity</class>
+        <class>model.entity.TutorEntity</class>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>

@@ -1,4 +1,4 @@
-package model;
+package model.entity;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;

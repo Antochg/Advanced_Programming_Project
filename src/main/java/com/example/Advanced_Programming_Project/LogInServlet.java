@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpSession;
 public class LogInServlet extends HttpServlet  {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-
 //        String login = request.getParameter("login");
 //        String password = request.getParameter("password");
 //
