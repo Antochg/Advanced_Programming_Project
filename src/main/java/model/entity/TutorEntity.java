@@ -11,6 +11,8 @@ public class TutorEntity {
     private String login;
     private String password;
 
+    public TutorEntity() {}
+
     @Id
     @Column(name = "id_tutor", nullable = false)
     public int getIdTutor() {

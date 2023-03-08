@@ -107,16 +107,17 @@
 <div class="container">
     <div class="screen">
         <div class="screen__content">
-            <form class="login">
+            <form class="login" method="post" action="loginServlet">
                 <div class="login__field">
-                    <input type="text" class="login__input" placeholder="User name / Email">
+                    <input type="text" name="login" class="login__input" placeholder="User name / Email">
                 </div>
                 <div class="login__field">
-                    <input type="password" class="login__input" placeholder="Password">
+                    <input type="password" name="password" class="login__input" placeholder="Password">
                 </div>
-                <button class="button login__submit">
-                    <a class="button__text" href="login">Log In Now</a>
-                </button>
+                <input type="submit" value="Log In" />
+<%--                <button class="button login__submit">--%>
+<%--                    <a class="button__text" href="login">Log In Now</a>--%>
+<%--                </button>--%>
             </form>
         </div>
     </div>
