@@ -9,6 +9,9 @@ public class CompanyEntity {
     private String name;
     private String address;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private InternshipEntity internshipEntity;
+
     @Id
     @Column(name = "id_company", nullable = false)
     public int getIdCompany() {
@@ -59,5 +62,13 @@ public class CompanyEntity {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
+    }
+
+    public InternshipEntity getInternshipEntity() {
+        return internshipEntity;
+    }
+
+    public void setInternshipEntity(InternshipEntity internshipEntity) {
+        this.internshipEntity = internshipEntity;
     }
 }

@@ -2,6 +2,8 @@ package model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tutor", schema = "advanced_programming_project", catalog = "")
 public class TutorEntity {
@@ -10,6 +12,9 @@ public class TutorEntity {
     private String lastname;
     private String login;
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<StudentEntity> students;
 
     public TutorEntity() {}
 
@@ -87,5 +92,13 @@ public class TutorEntity {
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
+    }
+
+    public List<StudentEntity> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<StudentEntity> students) {
+        this.students = students;
     }
 }

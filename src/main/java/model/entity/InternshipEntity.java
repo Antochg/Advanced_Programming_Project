@@ -23,10 +23,10 @@ public class InternshipEntity {
     private BigDecimal technicalNote;
     private BigDecimal communicationNote;
 
-    @OneToOne
+    @OneToOne(mappedBy = "internshipEntity")
     private StudentEntity studentEntity;
 
-    @OneToOne
+    @OneToOne(mappedBy = "internshipEntity")
     private CompanyEntity companyEntity;
 
     @Id

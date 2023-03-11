@@ -10,8 +10,12 @@ public class StudentEntity {
     private String lastname;
     private String level;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name="idTutor", nullable=false)
     private TutorEntity tutorEntity;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private InternshipEntity internshipEntity;
 
     @Id
     @Column(name = "id_student", nullable = false)
@@ -83,5 +87,13 @@ public class StudentEntity {
 
     public void setTutorEntity(TutorEntity tutorEntity) {
         this.tutorEntity = tutorEntity;
+    }
+
+    public InternshipEntity getInternshipEntity() {
+        return internshipEntity;
+    }
+
+    public void setInternshipEntity(InternshipEntity internshipEntity) {
+        this.internshipEntity = internshipEntity;
     }
 }
