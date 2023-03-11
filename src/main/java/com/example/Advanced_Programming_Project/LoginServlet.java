@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet  {
             TutorEntity tutor = tutorBean.getTutor(login, password);
 
             if (tutor != null) {
-                session.setAttribute("tutor", tutor);
+                session.setAttribute("tutorId", tutor.getIdTutor());
                 System.out.println(request.getContextPath());
                 response.sendRedirect(request.getContextPath() + "/gestionServlet"); //Page d'accueil
             } else {

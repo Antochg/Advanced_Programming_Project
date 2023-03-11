@@ -27,8 +27,8 @@ public class TutorEntity {
     @Column(name = "password", nullable = false, length = 50)
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<StudentEntity> students;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<StudentEntity> students;
 
     public TutorEntity() {}
 
@@ -98,11 +98,11 @@ public class TutorEntity {
         return result;
     }
 
-    public List<StudentEntity> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<StudentEntity> students) {
-        this.students = students;
-    }
+//    public List<StudentEntity> getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(List<StudentEntity> students) {
+//        this.students = students;
+//    }
 }

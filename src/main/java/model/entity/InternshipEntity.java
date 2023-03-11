@@ -64,10 +64,12 @@ public class InternshipEntity {
     @Column(name = "communication_note", nullable = true, precision = 2)
     private BigDecimal communicationNote;
 
-    @OneToOne(mappedBy = "internshipEntity")
+    @OneToOne( cascade = CascadeType.ALL )
+    @JoinColumn( name="id_student" )
     private StudentEntity studentEntity;
 
-    @OneToOne(mappedBy = "internshipEntity")
+    @OneToOne( cascade = CascadeType.ALL )
+    @JoinColumn( name="id_company" )
     private CompanyEntity companyEntity;
 
     public InternshipEntity() {}

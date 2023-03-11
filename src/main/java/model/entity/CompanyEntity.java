@@ -18,8 +18,8 @@ public class CompanyEntity {
     @Column(name = "address", nullable = false, length = 255)
     private String address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private InternshipEntity internshipEntity;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private InternshipEntity internshipEntity;
 
     public CompanyEntity() {}
 
@@ -69,11 +69,11 @@ public class CompanyEntity {
         return result;
     }
 
-    public InternshipEntity getInternshipEntity() {
-        return internshipEntity;
-    }
-
-    public void setInternshipEntity(InternshipEntity internshipEntity) {
-        this.internshipEntity = internshipEntity;
-    }
+//    public InternshipEntity getInternshipEntity() {
+//        return internshipEntity;
+//    }
+//
+//    public void setInternshipEntity(InternshipEntity internshipEntity) {
+//        this.internshipEntity = internshipEntity;
+//    }
 }

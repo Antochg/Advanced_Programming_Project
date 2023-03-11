@@ -22,11 +22,11 @@ public class StudentEntity {
     private String level;
 
     @ManyToOne
-    @JoinColumn(name="idTutor", nullable=false)
+    @JoinColumn( name="id_tutor" )
     private TutorEntity tutorEntity;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private InternshipEntity internshipEntity;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private InternshipEntity internshipEntity;
 
     public StudentEntity() {}
 
@@ -94,11 +94,11 @@ public class StudentEntity {
         this.tutorEntity = tutorEntity;
     }
 
-    public InternshipEntity getInternshipEntity() {
-        return internshipEntity;
-    }
-
-    public void setInternshipEntity(InternshipEntity internshipEntity) {
-        this.internshipEntity = internshipEntity;
-    }
+//    public InternshipEntity getInternshipEntity() {
+//        return internshipEntity;
+//    }
+//
+//    public void setInternshipEntity(InternshipEntity internshipEntity) {
+//        this.internshipEntity = internshipEntity;
+//    }
 }
