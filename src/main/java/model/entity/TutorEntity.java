@@ -3,18 +3,30 @@ package model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tutor", schema = "advanced_programming_project", catalog = "")
+@Table(name = "Tutor", schema = "advanced_programming_project", catalog = "")
 public class TutorEntity {
+    @Id
+    @Column(name = "id_tutor", nullable = false)
     private int idTutor;
+
+    @Basic
+    @Column(name = "name", nullable = true, length = 50)
     private String name;
+
+    @Basic
+    @Column(name = "lastname", nullable = false, length = 50)
     private String lastname;
+
+    @Basic
+    @Column(name = "login", nullable = false, length = 50)
     private String login;
+
+    @Basic
+    @Column(name = "password", nullable = false, length = 50)
     private String password;
 
     public TutorEntity() {}
 
-    @Id
-    @Column(name = "id_tutor", nullable = false)
     public int getIdTutor() {
         return idTutor;
     }
@@ -23,8 +35,6 @@ public class TutorEntity {
         this.idTutor = idTutor;
     }
 
-    @Basic
-    @Column(name = "name", nullable = true, length = 50)
     public String getName() {
         return name;
     }
@@ -33,8 +43,6 @@ public class TutorEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "lastname", nullable = false, length = 50)
     public String getLastname() {
         return lastname;
     }
@@ -43,8 +51,6 @@ public class TutorEntity {
         this.lastname = lastname;
     }
 
-    @Basic
-    @Column(name = "login", nullable = false, length = 50)
     public String getLogin() {
         return login;
     }
@@ -53,8 +59,6 @@ public class TutorEntity {
         this.login = login;
     }
 
-    @Basic
-    @Column(name = "password", nullable = false, length = 50)
     public String getPassword() {
         return password;
     }

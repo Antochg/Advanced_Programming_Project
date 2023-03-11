@@ -11,7 +11,7 @@
 <body>
     <h2>Tableau affichage étudiants</h2>
     <button class="">
-        <a class="" href="logout">Logout*</a>
+        <a class="" href="logout">Logout</a>
     </button>
     <table>
         <thead>

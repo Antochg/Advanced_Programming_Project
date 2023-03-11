@@ -3,18 +3,29 @@ package model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "student", schema = "advanced_programming_project", catalog = "")
+@Table(name = "Student", schema = "advanced_programming_project", catalog = "")
 public class StudentEntity {
+    @Id
+    @Column(name = "id_student", nullable = false)
     private int idStudent;
+
+    @Basic
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
+
+    @Basic
+    @Column(name = "lastname", nullable = false, length = 50)
     private String lastname;
+
+    @Basic
+    @Column(name = "level", nullable = false, length = 50)
     private String level;
 
     @OneToOne
     private TutorEntity tutorEntity;
 
-    @Id
-    @Column(name = "id_student", nullable = false)
+    public StudentEntity() {}
+
     public int getIdStudent() {
         return idStudent;
     }
@@ -23,8 +34,6 @@ public class StudentEntity {
         this.idStudent = idStudent;
     }
 
-    @Basic
-    @Column(name = "name", nullable = false, length = 50)
     public String getName() {
         return name;
     }
@@ -33,8 +42,6 @@ public class StudentEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "lastname", nullable = false, length = 50)
     public String getLastname() {
         return lastname;
     }
@@ -43,8 +50,6 @@ public class StudentEntity {
         this.lastname = lastname;
     }
 
-    @Basic
-    @Column(name = "level", nullable = false, length = 50)
     public String getLevel() {
         return level;
     }
