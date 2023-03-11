@@ -1,4 +1,4 @@
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="model.entity.StudentEntity" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -38,10 +38,10 @@
             <th>COM</th>
         </thead>
 
-<%--        <tbody>--%>
-<%--            <c:forEach items="${ employees }" var="employee">--%>
-<%--                <tr>--%>
-<%--                    <td><c:out value = "${employee.id}"/></td>--%>
+        <tbody>
+            <c:forEach items="${ allStudents }" var="student">
+                <tr>
+                   <td><c:out value = "${student.idStudent}"/></td>
 <%--                    <td>Maria Anders</td>--%>
 <%--                    <td>Germany</td>--%>
 <%--                    <td>Maria Anders</td>--%>
@@ -51,9 +51,9 @@
 <%--                    <td>Maria Anders</td>--%>
 <%--                    <td>Germany</td>--%>
 <%--                    <td>Germany</td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--        </tbody>--%>
+               </tr>
+            </c:forEach>
+        </tbody>
     </table>
 
 </body>

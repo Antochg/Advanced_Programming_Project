@@ -22,7 +22,7 @@ public class StudentSessionBean {
 
     public List<StudentEntity> getAllStudentsByTutor(int tutorId){
         Query q = entityManager.createQuery(
-                "select s from StudentEntity s join InternshipEntity i on s.idStudent = i.studentEntity.idStudent where s.tutorEntity.idTutor = ?1")
+                "select s from StudentEntity s where s.tutor.idTutor = ?1")
                 .setParameter(1, tutorId);
         List<StudentEntity> students = q.getResultList();
         return students.size() > 1 ? students : null;

@@ -64,11 +64,13 @@ public class InternshipEntity {
     @Column(name = "communication_note", nullable = true, precision = 2)
     private BigDecimal communicationNote;
 
-    @OneToOne(mappedBy = "internshipEntity")
-    private StudentEntity studentEntity;
+    @ManyToOne
+    //@JoinColumn(name="id_student")
+    private StudentEntity student;
 
-    @OneToOne(mappedBy = "internshipEntity")
-    private CompanyEntity companyEntity;
+    @ManyToOne
+    //@JoinColumn(name="id_company")
+    private CompanyEntity company;
 
     public InternshipEntity() {}
 
@@ -230,19 +232,19 @@ public class InternshipEntity {
         return result;
     }
 
-    public StudentEntity getStudentEntity() {
-        return studentEntity;
+    public StudentEntity getStudent() {
+        return student;
     }
 
-    public void setStudentEntity(StudentEntity studentEntity) {
-        this.studentEntity = studentEntity;
+    public void setStudent(StudentEntity student) {
+        this.student = student;
     }
 
-    public CompanyEntity getCompanyEntity() {
-        return companyEntity;
+    public CompanyEntity getCompany() {
+        return company;
     }
 
-    public void setCompanyEntity(CompanyEntity companyEntity) {
-        this.companyEntity = companyEntity;
+    public void setCompany(CompanyEntity company) {
+        this.company = company;
     }
 }

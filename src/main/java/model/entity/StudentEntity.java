@@ -2,6 +2,8 @@ package model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Student", schema = "advanced_programming_project", catalog = "")
 public class StudentEntity {
@@ -22,11 +24,12 @@ public class StudentEntity {
     private String level;
 
     @ManyToOne
-    @JoinColumn(name="idTutor", nullable=false)
-    private TutorEntity tutorEntity;
+    @JoinColumn(name="id_tutor", nullable=false)
+    private TutorEntity tutor;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private InternshipEntity internshipEntity;
+    @OneToMany
+    @JoinColumn(name="id_student", nullable = false)
+    private List<InternshipEntity> interships;
 
     public StudentEntity() {}
 
@@ -87,18 +90,18 @@ public class StudentEntity {
     }
 
     public TutorEntity getTutorEntity() {
-        return tutorEntity;
+        return tutor;
     }
 
-    public void setTutorEntity(TutorEntity tutorEntity) {
-        this.tutorEntity = tutorEntity;
+    public void setTutor(TutorEntity tutor) {
+        this.tutor = tutor;
     }
 
-    public InternshipEntity getInternshipEntity() {
-        return internshipEntity;
+    public List<InternshipEntity> getInternships() {
+        return interships;
     }
 
-    public void setInternshipEntity(InternshipEntity internshipEntity) {
-        this.internshipEntity = internshipEntity;
+    public void setInternships(List<InternshipEntity> interships) {
+        this.interships = interships;
     }
 }

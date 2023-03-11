@@ -2,6 +2,8 @@ package model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Company", schema = "advanced_programming_project", catalog = "")
 public class CompanyEntity {
@@ -18,8 +20,9 @@ public class CompanyEntity {
     @Column(name = "address", nullable = false, length = 255)
     private String address;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private InternshipEntity internshipEntity;
+    @OneToMany
+    @JoinColumn(name="id_company")
+    private List<InternshipEntity> internships;
 
     public CompanyEntity() {}
 
@@ -47,6 +50,10 @@ public class CompanyEntity {
         this.address = address;
     }
 
+    public List<InternshipEntity> getInternships() { return internships; }
+
+    public void setInternships( List<InternshipEntity> internships ) { this.internships = internships; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,11 +76,4 @@ public class CompanyEntity {
         return result;
     }
 
-    public InternshipEntity getInternshipEntity() {
-        return internshipEntity;
-    }
-
-    public void setInternshipEntity(InternshipEntity internshipEntity) {
-        this.internshipEntity = internshipEntity;
-    }
 }
