@@ -23,6 +23,12 @@ public class InternshipEntity {
     private BigDecimal technicalNote;
     private BigDecimal communicationNote;
 
+    @OneToOne
+    private StudentEntity studentEntity;
+
+    @OneToOne
+    private CompanyEntity companyEntity;
+
     @Id
     @Column(name = "id_internship", nullable = false)
     public int getIdInternship() {
@@ -207,5 +213,21 @@ public class InternshipEntity {
         result = 31 * result + (technicalNote != null ? technicalNote.hashCode() : 0);
         result = 31 * result + (communicationNote != null ? communicationNote.hashCode() : 0);
         return result;
+    }
+
+    public StudentEntity getStudentEntity() {
+        return studentEntity;
+    }
+
+    public void setStudentEntity(StudentEntity studentEntity) {
+        this.studentEntity = studentEntity;
+    }
+
+    public CompanyEntity getCompanyEntity() {
+        return companyEntity;
+    }
+
+    public void setCompanyEntity(CompanyEntity companyEntity) {
+        this.companyEntity = companyEntity;
     }
 }

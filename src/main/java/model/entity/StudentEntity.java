@@ -10,6 +10,9 @@ public class StudentEntity {
     private String lastname;
     private String level;
 
+    @OneToOne
+    private TutorEntity tutorEntity;
+
     @Id
     @Column(name = "id_student", nullable = false)
     public int getIdStudent() {
@@ -72,5 +75,13 @@ public class StudentEntity {
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         result = 31 * result + (level != null ? level.hashCode() : 0);
         return result;
+    }
+
+    public TutorEntity getTutorEntity() {
+        return tutorEntity;
+    }
+
+    public void setTutorEntity(TutorEntity tutorEntity) {
+        this.tutorEntity = tutorEntity;
     }
 }
