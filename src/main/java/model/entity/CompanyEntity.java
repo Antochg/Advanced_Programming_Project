@@ -20,8 +20,8 @@ public class CompanyEntity {
     @Column(name = "address", nullable = false, length = 255)
     private String address;
 
-    @OneToMany
-    @JoinColumn(name="id_company")
+    @OneToMany(mappedBy = "company")
+    //@JoinColumn(name="id_company")
     private List<InternshipEntity> internships;
 
     public CompanyEntity() {}

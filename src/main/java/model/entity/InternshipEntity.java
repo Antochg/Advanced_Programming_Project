@@ -65,11 +65,11 @@ public class InternshipEntity {
     private BigDecimal communicationNote;
 
     @ManyToOne
-    //@JoinColumn(name="id_student")
+    @JoinColumn(name="id_student")
     private StudentEntity student;
 
     @ManyToOne
-    //@JoinColumn(name="id_company")
+    @JoinColumn(name="id_company")
     private CompanyEntity company;
 
     public InternshipEntity() {}

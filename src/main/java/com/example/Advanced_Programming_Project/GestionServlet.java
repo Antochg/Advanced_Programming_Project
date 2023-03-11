@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.beans.InternshipSessionBean;
 import model.beans.StudentSessionBean;
+import model.entity.InternshipEntity;
 import model.entity.StudentEntity;
 import model.entity.TutorEntity;
 
@@ -19,7 +21,7 @@ import java.util.Collection;
 public class GestionServlet extends HttpServlet {
 
     @EJB
-    StudentSessionBean studentSessionBean;
+    InternshipSessionBean internshipSessionBean;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
@@ -27,8 +29,8 @@ public class GestionServlet extends HttpServlet {
         TutorEntity tutor = (TutorEntity) session.getAttribute("tutor");
 
         if(tutor != null){
-            Collection<StudentEntity> studentList = studentSessionBean.getAllStudentsByTutor(tutor.getIdTutor());
-            request.setAttribute("allStudents", studentList);
+            Collection<InternshipEntity> interships = internshipSessionBean.getAllIntershipsByTutor(tutor.getIdTutor());
+            request.setAttribute("allInterships", interships);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/interships.jsp");
             dispatcher.forward(request, response);
         } else {

@@ -15,11 +15,12 @@
     </button>
     <table>
         <thead>
-            <th>Gr</th>
-            <th>NOM</th>
+            <th>Groupe</th>
+            <th>Nom</th>
+            <th>Prénom</th>
             <th>CdC</th>
             <th>Fiche visite</th>
-            <th>Fiche eval entr</th>
+            <th>Fiche eval</th>
             <th>Sondage web</th>
             <th>Rappport rendu</th>
             <th>Soutenance</th>
@@ -31,26 +32,34 @@
             <th>Fin</th>
             <th>Entr.</th>
             <th>MdS</th>
-            <th>ADRESSE</th>
-            <th>NOTE</th>
-            <th>TECH</th>
-            <th>NOTE</th>
-            <th>COM</th>
+            <th>Adresse</th>
+            <th>Note technique</th>
+            <th>Note communication</th>
         </thead>
 
         <tbody>
-            <c:forEach items="${ allStudents }" var="student">
+            <c:forEach items="${ allInterships }" var="interships">
                 <tr>
-                   <td><c:out value = "${student.idStudent}"/></td>
-<%--                    <td>Maria Anders</td>--%>
-<%--                    <td>Germany</td>--%>
-<%--                    <td>Maria Anders</td>--%>
-<%--                    <td>Germany</td>--%>
-<%--                    <td>Maria Anders</td>--%>
-<%--                    <td>Germany</td>--%>
-<%--                    <td>Maria Anders</td>--%>
-<%--                    <td>Germany</td>--%>
-<%--                    <td>Germany</td>--%>
+                    <td><c:out value = "${interships.student.level}"/></td>
+                    <td><c:out value = "${interships.student.lastname}"/></td>
+                    <td><c:out value = "${interships.student.name}"/></td>
+                    <td>CdC</td>
+                    <td><input type="checkbox" <c:out value="${interships.visitSheet}"/>><c:out value="${interships.visitSheet ? 'true' : 'false'}"/></td>
+                    <td>Fiche eval</td>
+                    <td>Sondage web</td>
+                    <td>Rappport rendu</td>
+                    <td>Soutenance</td>
+                        <%-- Visite --%>
+                    <td>Visite planifiée</td>
+                    <td>Visite faite</td>
+                        <%-- Fin visite --%>
+                    <td>Debut</td>
+                    <td>Fin</td>
+                    <td>Entr.</td>
+                    <td>MdS</td>
+                    <td>Adresse</td>
+                    <td>Note technique</td>
+                    <td>Note communication</td>
                </tr>
             </c:forEach>
         </tbody>

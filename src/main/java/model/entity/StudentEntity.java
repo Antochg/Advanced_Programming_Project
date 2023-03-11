@@ -27,8 +27,8 @@ public class StudentEntity {
     @JoinColumn(name="id_tutor", nullable=false)
     private TutorEntity tutor;
 
-    @OneToMany
-    @JoinColumn(name="id_student", nullable = false)
+    @OneToMany(mappedBy = "student")
+    //@JoinColumn(name="id_student", nullable = false)
     private List<InternshipEntity> interships;
 
     public StudentEntity() {}

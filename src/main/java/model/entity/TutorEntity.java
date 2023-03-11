@@ -27,7 +27,7 @@ public class TutorEntity {
     @Column(name = "password", nullable = false, length = 50)
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tutor")
     private List<StudentEntity> students;
 
     public TutorEntity() {}
