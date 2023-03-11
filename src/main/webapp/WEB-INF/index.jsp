@@ -107,7 +107,7 @@
 <div class="container">
     <div class="screen">
         <div class="screen__content">
-            <form class="login" method="post" action="loginServlet">
+            <form class="login" method="post" action="login">
                 <div class="login__field">
                     <input type="text" name="login" class="login__input" placeholder="User name / Email">
                 </div>

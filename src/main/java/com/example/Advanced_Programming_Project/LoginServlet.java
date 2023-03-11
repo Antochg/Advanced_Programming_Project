@@ -11,7 +11,7 @@ import model.entity.TutorEntity;
 
 import java.io.IOException;
 
-@WebServlet("/loginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet  {
 
     @EJB
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet  {
             if (tutor != null) {
                 session.setAttribute("tutor", tutor);
                 System.out.println(request.getContextPath());
-                response.sendRedirect(request.getContextPath() + "/home.jsp"); //Page d'accueil
+                response.sendRedirect(request.getContextPath() + "/gestionServlet"); //Page d'accueil
             } else {
                 response.sendRedirect(request.getContextPath() + "/index.jsp"); // page d'erreur
             }
