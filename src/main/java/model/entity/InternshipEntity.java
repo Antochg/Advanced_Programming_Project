@@ -6,21 +6,62 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
-@Table(name = "internship", schema = "advanced_programming_project", catalog = "")
+@Table(name = "Internship", schema = "advanced_programming_project", catalog = "")
 public class InternshipEntity {
+    @Id
+    @Column(name = "id_internship", nullable = false)
     private int idInternship;
+
+    @Basic
+    @Column(name = "specifications", nullable = false)
     private boolean specifications;
+
+    @Basic
+    @Column(name = "visit_sheet", nullable = false)
     private boolean visitSheet;
+
+    @Basic
+    @Column(name = "company_eval_sheet", nullable = false)
     private boolean companyEvalSheet;
+
+    @Basic
+    @Column(name = "web_survey", nullable = false)
     private boolean webSurvey;
+
+    @Basic
+    @Column(name = "report_delivered", nullable = false)
     private boolean reportDelivered;
+
+    @Basic
+    @Column(name = "presentation", nullable = false)
     private boolean presentation;
+
+    @Basic
+    @Column(name = "planned", nullable = false)
     private boolean planned;
+
+    @Basic
+    @Column(name = "done", nullable = false)
     private boolean done;
+
+    @Basic
+    @Column(name = "start_date", nullable = false)
     private Date startDate;
+
+    @Basic
+    @Column(name = "end_date", nullable = false)
     private Date endDate;
+
+    @Basic
+    @Column(name = "supervisor", nullable = false, length = 50)
     private String supervisor;
+
+    @Basic
+    @Column(name = "technical_note", nullable = true, precision = 2)
     private BigDecimal technicalNote;
+
+    @Basic
+    @Column(name = "communication_note", nullable = true, precision = 2)
     private BigDecimal communicationNote;
 
     @OneToOne(mappedBy = "internshipEntity")
@@ -29,8 +70,8 @@ public class InternshipEntity {
     @OneToOne(mappedBy = "internshipEntity")
     private CompanyEntity companyEntity;
 
-    @Id
-    @Column(name = "id_internship", nullable = false)
+    public InternshipEntity() {}
+
     public int getIdInternship() {
         return idInternship;
     }
@@ -39,8 +80,6 @@ public class InternshipEntity {
         this.idInternship = idInternship;
     }
 
-    @Basic
-    @Column(name = "specifications", nullable = false)
     public boolean isSpecifications() {
         return specifications;
     }
@@ -49,8 +88,6 @@ public class InternshipEntity {
         this.specifications = specifications;
     }
 
-    @Basic
-    @Column(name = "visit_sheet", nullable = false)
     public boolean isVisitSheet() {
         return visitSheet;
     }
@@ -59,8 +96,6 @@ public class InternshipEntity {
         this.visitSheet = visitSheet;
     }
 
-    @Basic
-    @Column(name = "company_eval_sheet", nullable = false)
     public boolean isCompanyEvalSheet() {
         return companyEvalSheet;
     }
@@ -69,8 +104,6 @@ public class InternshipEntity {
         this.companyEvalSheet = companyEvalSheet;
     }
 
-    @Basic
-    @Column(name = "web_survey", nullable = false)
     public boolean isWebSurvey() {
         return webSurvey;
     }
@@ -79,8 +112,6 @@ public class InternshipEntity {
         this.webSurvey = webSurvey;
     }
 
-    @Basic
-    @Column(name = "report_delivered", nullable = false)
     public boolean isReportDelivered() {
         return reportDelivered;
     }
@@ -89,8 +120,6 @@ public class InternshipEntity {
         this.reportDelivered = reportDelivered;
     }
 
-    @Basic
-    @Column(name = "presentation", nullable = false)
     public boolean isPresentation() {
         return presentation;
     }
@@ -99,8 +128,6 @@ public class InternshipEntity {
         this.presentation = presentation;
     }
 
-    @Basic
-    @Column(name = "planned", nullable = false)
     public boolean isPlanned() {
         return planned;
     }
@@ -109,8 +136,6 @@ public class InternshipEntity {
         this.planned = planned;
     }
 
-    @Basic
-    @Column(name = "done", nullable = false)
     public boolean isDone() {
         return done;
     }
@@ -119,8 +144,6 @@ public class InternshipEntity {
         this.done = done;
     }
 
-    @Basic
-    @Column(name = "start_date", nullable = false)
     public Date getStartDate() {
         return startDate;
     }
@@ -129,8 +152,6 @@ public class InternshipEntity {
         this.startDate = startDate;
     }
 
-    @Basic
-    @Column(name = "end_date", nullable = false)
     public Date getEndDate() {
         return endDate;
     }
@@ -139,8 +160,6 @@ public class InternshipEntity {
         this.endDate = endDate;
     }
 
-    @Basic
-    @Column(name = "supervisor", nullable = false, length = 50)
     public String getSupervisor() {
         return supervisor;
     }
@@ -149,8 +168,6 @@ public class InternshipEntity {
         this.supervisor = supervisor;
     }
 
-    @Basic
-    @Column(name = "technical_note", nullable = true, precision = 2)
     public BigDecimal getTechnicalNote() {
         return technicalNote;
     }
@@ -159,8 +176,6 @@ public class InternshipEntity {
         this.technicalNote = technicalNote;
     }
 
-    @Basic
-    @Column(name = "communication_note", nullable = true, precision = 2)
     public BigDecimal getCommunicationNote() {
         return communicationNote;
     }

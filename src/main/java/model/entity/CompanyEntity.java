@@ -3,17 +3,26 @@ package model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "company", schema = "advanced_programming_project", catalog = "")
+@Table(name = "Company", schema = "advanced_programming_project", catalog = "")
 public class CompanyEntity {
+
+    @Id
+    @Column(name = "id_company", nullable = false)
     private int idCompany;
+
+    @Basic
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
+
+    @Basic
+    @Column(name = "address", nullable = false, length = 255)
     private String address;
 
     @OneToOne(cascade = CascadeType.ALL)
     private InternshipEntity internshipEntity;
 
-    @Id
-    @Column(name = "id_company", nullable = false)
+    public CompanyEntity() {}
+
     public int getIdCompany() {
         return idCompany;
     }
@@ -22,8 +31,6 @@ public class CompanyEntity {
         this.idCompany = idCompany;
     }
 
-    @Basic
-    @Column(name = "name", nullable = false, length = 50)
     public String getName() {
         return name;
     }
@@ -32,8 +39,6 @@ public class CompanyEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "address", nullable = false, length = 255)
     public String getAddress() {
         return address;
     }
