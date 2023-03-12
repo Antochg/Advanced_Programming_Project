@@ -15,6 +15,16 @@ public class InternshipSessionBean {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
     EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+    public List<InternshipEntity> searchInternships(String name, int tutorId) {
+        Query q = entityManager.createQuery(
+                        "select i from InternshipEntity i join i.student s join s.tutor t where i.student.name like :name and t.idTutor = :idTutor", InternshipEntity.class)
+                .setParameter("name", "%" + name + "%")
+                .setParameter("idTutor", tutorId);
+        List<InternshipEntity> internships = q.getResultList();
+        return internships.size() > 0 ? internships : null;
+    }
+
+
     public List<InternshipEntity> getAllIntershipsByTutor(int tutorId){
         Query q = entityManager.createQuery(
                 "select i from InternshipEntity i join i.student s join s.tutor t where t.idTutor = ?1", InternshipEntity.class)
