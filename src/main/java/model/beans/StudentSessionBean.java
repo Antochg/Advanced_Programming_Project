@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import model.entity.StudentEntity;
 import model.entity.TutorEntity;
 
@@ -20,11 +22,30 @@ public class StudentSessionBean {
         return q.getResultList();
     }
 
-    public List<StudentEntity> getAllStudentsByTutor(int tutorId){
+    public StudentEntity getStudentByNameLastname(String name, String lastname){
         Query q = entityManager.createQuery(
-                "select s from StudentEntity s where s.tutor.idTutor = ?1")
-                .setParameter(1, tutorId);
+                "select s from StudentEntity s where s.name = ?1 and s.lastname = ?2")
+                .setParameter(1, name)
+                .setParameter(2, lastname);
         List<StudentEntity> students = q.getResultList();
-        return students.size() > 1 ? students : null;
+        return students.size() == 1 ? students.get(0) : null;
+    }
+
+    public StudentEntity addStudent(String studentLastname, String studentName, String studentGroup, HttpServletRequest request) {
+        entityManager.getTransaction().begin();
+
+        HttpSession session = request.getSession(true);
+        TutorEntity tutor = (TutorEntity) session.getAttribute("tutor");
+
+        StudentEntity newStudent = new StudentEntity();
+        newStudent.setLastname(studentLastname);
+        newStudent.setName(studentName);
+        newStudent.setLevel(studentGroup);
+        newStudent.setTutor(tutor);
+
+        entityManager.persist(newStudent);
+        entityManager.getTransaction().commit();
+
+        return newStudent;
     }
 }

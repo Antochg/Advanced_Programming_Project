@@ -9,6 +9,7 @@ import java.util.List;
 public class StudentEntity {
     @Id
     @Column(name = "id_student", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int idStudent;
 
     @Basic
@@ -27,7 +28,7 @@ public class StudentEntity {
     @JoinColumn(name="id_tutor", nullable=false)
     private TutorEntity tutor;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     //@JoinColumn(name="id_student", nullable = false)
     private List<InternshipEntity> interships;
 

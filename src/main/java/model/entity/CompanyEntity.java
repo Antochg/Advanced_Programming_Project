@@ -10,6 +10,7 @@ public class CompanyEntity {
 
     @Id
     @Column(name = "id_company", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int idCompany;
 
     @Basic
@@ -20,7 +21,7 @@ public class CompanyEntity {
     @Column(name = "address", nullable = false, length = 255)
     private String address;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     //@JoinColumn(name="id_company")
     private List<InternshipEntity> internships;
 

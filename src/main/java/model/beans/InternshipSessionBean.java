@@ -3,6 +3,7 @@ package model.beans;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 import jakarta.servlet.http.HttpServletRequest;
+import model.entity.CompanyEntity;
 import model.entity.InternshipEntity;
 import model.entity.StudentEntity;
 
@@ -64,6 +65,29 @@ public class InternshipSessionBean {
             internship.setStartDate(Date.valueOf(request.getParameter("internship_" + internshipId + "_startDate")));
             internship.setEndDate(Date.valueOf(request.getParameter("internship_" + internshipId + "_endDate")));
         }
+        entityManager.getTransaction().commit();
+    }
+
+    public void addInternship(String internshipBeginDate, String internshipEndDate, String internshipSupervisor, StudentEntity student, CompanyEntity company, HttpServletRequest request){
+        entityManager.getTransaction().begin();
+
+        InternshipEntity internship = new InternshipEntity();
+
+        internship.setSpecifications(false);
+        internship.setVisitSheet(false);
+        internship.setCompanyEvalSheet(false);
+        internship.setWebSurvey(false);
+        internship.setReportDelivered(false);
+        internship.setPresentation(false);
+        internship.setPlanned(false);
+        internship.setDone(false);
+        internship.setStartDate(Date.valueOf(internshipBeginDate));
+        internship.setEndDate(Date.valueOf(internshipEndDate));
+        internship.setSupervisor(internshipSupervisor);
+        internship.setCompany(company);
+        internship.setStudent(student);
+
+        entityManager.persist(internship);
         entityManager.getTransaction().commit();
     }
 
