@@ -117,5 +117,36 @@
     <form id="form-internships" method="post" action="save-internships">
         <button type="submit">Save</button>
     </form>
+
+    <form id="add-form-internships" method="post" action="add-internship" style="display:none">
+        <label>Etudiant</label>
+        <input form="add-form-internships" type="text" name="new_student_lastname" value="" placeholder="Nom">
+        <input form="add-form-internships" type="text" name="new_student_name" value="" placeholder="Prénom">
+        <input form="add-form-internships" type="text" name="new_student_group" value="" placeholder="Groupe">
+
+        <label>Entreprise</label>
+        <input form="add-form-internships" type="text" name="new_company_name" value="" placeholder="Nom">
+        <input form="add-form-internships" type="text" name="new_company_address" value="" placeholder="Adresse">
+
+        <label>Stage</label>
+        <input form="add-form-internships" type="date" name="new_internship_begin_date" value="" placeholder="Date de début">
+        <input form="add-form-internships" type="date" name="new_internship_end_date" value="" placeholder="Date de fin">
+        <input form="add-form-internships" type="text" name="new_internship_supervisor" value="" placeholder="Maître de stage">
+        <button type="submit">Sauvegarder</button>
+    </form>
+
+    <button type="button" onclick="showAddForm()">Ajouter un étudiant</button>
+
 </body>
 </html>
+
+<script>
+    function showAddForm() {
+        let x = document.getElementById("add-form-internships");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>

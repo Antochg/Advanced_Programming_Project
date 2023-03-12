@@ -10,6 +10,7 @@ import java.sql.Date;
 public class InternshipEntity {
     @Id
     @Column(name = "id_internship", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int idInternship;
 
     @Basic
