@@ -1,4 +1,6 @@
+<%@ page import="model.entity.StudentEntity" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -179,19 +181,19 @@
                         <img class="pfp" src="https://media.discordapp.net/attachments/1065177544556560394/1084136995359567962/image.png" alt="test">
                         <p class="attribute">
                             <span class="bold">Identifiant</span>
-                            <span>{StudentId}</span>
+                            <c:out>${requestScope.current_student.getIdStudent()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Nom</span>
-                            <span>{StudentLastname}</span>
+                            <c:out>${requestScope.current_student.getLastname()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Prénom</span>
-                            <span>{StudentFirstname}</span>
+                            <c:out>${requestScope.current_student.getName()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Group</span>
-                            <span>{StudentGroup}</span>
+                            <c:out>${requestScope.current_student.getLevel()}</c:out>
                         </p>
                     </div>
                 </article>
@@ -200,22 +202,22 @@
                 <article class="box">
                     <h2 class="box_title">Détail de l'entreprise</h2>
                     <div class="box_content">
-                        <p class="company_name bold">{CompanyName}</p>
+                        <p class="company_name bold"><c:out>${requestScope.current_company.getName()}</c:out></p>
                         <p class="attribute">
                             <span class="bold">Adresse de l'entreprise</span>
-                            <textarea placeholder="{CompanyAddress}" class="address_input"></textarea>
+                            <textarea placeholder="{CompanyAddress}" class="address_input">${requestScope.current_company.getAddress()}</textarea>
                         </p>
                         <p class="attribute">
                             <span class="bold">Maître d'apprentissage</span>
-                            <span>{InternshipSupervisor}</span>
+                            <c:out>${requestScope.current_internship.getSupervisor()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Date de début</span>
-                            <span>{InternshipBeginDate}</span>
+                            <c:out>${requestScope.current_internship.getStartDate()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Date de fin</span>
-                            <span>{InternshipEndDate}</span>
+                            <c:out>${requestScope.current_internship.getEndDate()}</c:out>
                         </p>
                     </div>
                 </article>
@@ -243,7 +245,9 @@
                     </div>
                 </article>
             </section>
-            <button type="button" class="back_button">Retour</button>
+            <button type="button" class="back_button">
+                <a class="back_button" href="${requestScope.back_path}">Retour</a>
+            </button>
         </div>
     </div>
 </div>

@@ -22,4 +22,14 @@ public class InternshipSessionBean {
         List<InternshipEntity> internships = q.getResultList();
         return internships.size() > 0 ? internships : null;
     }
+
+    public InternshipEntity getInternshipByIdForTutor(int internshipId, int tutorId) {
+        Query q = entityManager.createQuery(
+                        "select i from InternshipEntity i join i.student s join s.tutor t where t.idTutor = ?1 and i.idInternship = ?2", InternshipEntity.class)
+                .setParameter(1, tutorId)
+                .setParameter(2, internshipId);
+        InternshipEntity internship = (InternshipEntity) q.getSingleResult();
+
+        return internship;
+    }
 }
