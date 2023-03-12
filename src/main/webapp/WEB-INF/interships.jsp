@@ -18,9 +18,9 @@
             <th>Groupe</th>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>CdC</th>
+            <th>Cahier des Charges</th>
             <th>Fiche visite</th>
-            <th>Fiche eval</th>
+            <th>Fiche évaluation</th>
             <th>Sondage web</th>
             <th>Rappport rendu</th>
             <th>Soutenance</th>
@@ -35,23 +35,55 @@
             <th>Adresse</th>
             <th>Note technique</th>
             <th>Note communication</th>
+            <th></th>
         </thead>
 
         <tbody>
-            <c:forEach items="${ allInterships }" var="interships">
+            <c:forEach items="${ allInterships }" var="internship">
+                <input form="form-internships" type="hidden" name="internshipsIds" value="${internship.idInternship}">
                 <tr>
-                    <td><c:out value = "${interships.student.level}"/></td>
-                    <td><c:out value = "${interships.student.lastname}"/></td>
-                    <td><c:out value = "${interships.student.name}"/></td>
-                    <td>CdC</td>
-                    <td><input type="checkbox" <c:out value="${interships.visitSheet}"/>><c:out value="${interships.visitSheet ? 'true' : 'false'}"/></td>
-                    <td>Fiche eval</td>
-                    <td>Sondage web</td>
-                    <td>Rappport rendu</td>
-                    <td>Soutenance</td>
+                    <td>
+                        <input form="form-internships" type="text" name="internship_${internship.idInternship}_level" value="${internship.student.level}">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="text" name="internship_${internship.idInternship}_name" value="${internship.student.name}">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="text" name="internship_${internship.idInternship}_lastname" value="${internship.student.lastname}">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_specifications" ${internship.specifications ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_specifications" value="false">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_visitSheet" ${internship.visitSheet ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_visitSheet" value="false">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_companyEvalSheet" ${internship.companyEvalSheet ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_companyEvalSheet" value="false">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_webSurvey" ${internship.webSurvey ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_webSurvey" value="false">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_reportDelivered" ${internship.reportDelivered ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_reportDelivered" value="false">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_presentation" ${internship.presentation ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_presentation" value="false">
+                    </td>
                         <%-- Visite --%>
-                    <td>Visite planifiée</td>
-                    <td>Visite faite</td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_planned" ${internship.planned ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_planned" value="false">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="checkbox" name="internship_${internship.idInternship}_done" ${internship.done ? "checked" : ""} value="true">
+                        <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_done" value="false">
+                    </td>
                         <%-- Fin visite --%>
                     <td>Debut</td>
                     <td>Fin</td>
@@ -60,10 +92,16 @@
                     <td>Adresse</td>
                     <td>Note technique</td>
                     <td>Note communication</td>
+                    <button>
+                        <a class="" href="internship/${internship.idInternship}">Accéder</a>
+                    </button>
                </tr>
             </c:forEach>
         </tbody>
     </table>
 
+    <form id="form-internships" method="post" action="save-internships">
+        <button type="submit">Save</button>
+    </form>
 </body>
 </html>
