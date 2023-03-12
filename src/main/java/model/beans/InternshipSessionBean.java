@@ -3,6 +3,7 @@ package model.beans;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 import jakarta.servlet.http.HttpServletRequest;
+import model.entity.CompanyEntity;
 import model.entity.InternshipEntity;
 import model.entity.StudentEntity;
 
@@ -13,6 +14,16 @@ import java.util.List;
 public class InternshipSessionBean {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
     EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+    public List<InternshipEntity> searchInternships(String name, int tutorId) {
+        Query q = entityManager.createQuery(
+                        "select i from InternshipEntity i join i.student s join s.tutor t where i.student.name like :name and t.idTutor = :idTutor", InternshipEntity.class)
+                .setParameter("name", "%" + name + "%")
+                .setParameter("idTutor", tutorId);
+        List<InternshipEntity> internships = q.getResultList();
+        return internships.size() > 0 ? internships : null;
+    }
+
 
     public List<InternshipEntity> getAllIntershipsByTutor(int tutorId){
         Query q = entityManager.createQuery(
@@ -54,6 +65,39 @@ public class InternshipSessionBean {
             internship.setStartDate(Date.valueOf(request.getParameter("internship_" + internshipId + "_startDate")));
             internship.setEndDate(Date.valueOf(request.getParameter("internship_" + internshipId + "_endDate")));
         }
+        entityManager.getTransaction().commit();
+    }
+
+    public void editInternshipManagement(InternshipEntity internship, String missionDescription, String comment, HttpServletRequest request) {
+        entityManager.getTransaction().begin();
+
+        internship.setMissionDescription(missionDescription);
+        internship.setComments(comment);
+
+        entityManager.persist(internship);
+        entityManager.getTransaction().commit();
+    }
+
+    public void addInternship(String internshipBeginDate, String internshipEndDate, String internshipSupervisor, StudentEntity student, CompanyEntity company, HttpServletRequest request){
+        entityManager.getTransaction().begin();
+
+        InternshipEntity internship = new InternshipEntity();
+
+        internship.setSpecifications(false);
+        internship.setVisitSheet(false);
+        internship.setCompanyEvalSheet(false);
+        internship.setWebSurvey(false);
+        internship.setReportDelivered(false);
+        internship.setPresentation(false);
+        internship.setPlanned(false);
+        internship.setDone(false);
+        internship.setStartDate(Date.valueOf(internshipBeginDate));
+        internship.setEndDate(Date.valueOf(internshipEndDate));
+        internship.setSupervisor(internshipSupervisor);
+        internship.setCompany(company);
+        internship.setStudent(student);
+
+        entityManager.persist(internship);
         entityManager.getTransaction().commit();
     }
 

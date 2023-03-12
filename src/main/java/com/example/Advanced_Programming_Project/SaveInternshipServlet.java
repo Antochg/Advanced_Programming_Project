@@ -5,10 +5,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.beans.InternshipSessionBean;
+import model.entity.InternshipEntity;
+import model.entity.TutorEntity;
 
 import java.io.IOException;
 import java.util.Enumeration;
+
+import static java.lang.Integer.parseInt;
 
 @WebServlet("/save-internship")
 public class SaveInternshipServlet extends HttpServlet  {
@@ -22,17 +27,16 @@ public class SaveInternshipServlet extends HttpServlet  {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {}
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //IDs de l'ensemble des internships dans le dashboard du tuteur
-        //String[] internshipIds = request.getParameterValues("internshipsIds");
-        //internshipSessionBean.updateInternships(internshipIds, request);
+        HttpSession session = request.getSession(true);
+        TutorEntity tutor = (TutorEntity) session.getAttribute("tutor");
 
+        int internshipId = parseInt(request.getParameter("id"));
+        String missionDescription = request.getParameter("missionDescription");
+        String comment = request.getParameter("comment");
 
-        Enumeration<String> parameterNames = request.getParameterNames();
+        InternshipEntity internship = internshipSessionBean.getInternshipByIdForTutor(internshipId, tutor.getIdTutor());
 
-        while (parameterNames.hasMoreElements()) {
-            String paramName = parameterNames.nextElement();
-            System.out.println(paramName +" "+ request.getParameter(paramName));
-        }
+        internshipSessionBean.editInternshipManagement(internship, missionDescription, comment, request);
 
         response.sendRedirect(request.getContextPath() + "/gestionServlet");
     }

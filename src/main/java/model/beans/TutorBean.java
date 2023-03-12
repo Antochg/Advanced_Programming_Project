@@ -25,4 +25,14 @@ public class TutorBean {
         //TutorEntity tutor = (TutorEntity) query.getSingleResult();
         //return tutor;
     }
+
+    public TutorEntity getTutorById(int tutorId) {
+        Query query = entityManager.createQuery("SELECT t FROM TutorEntity t WHERE t.idTutor = ?1")
+                .setParameter(1, tutorId);
+
+        List<TutorEntity> tutors = query.getResultList();
+        return tutors.size() == 1 ? tutors.get(0) : null;
+        //TutorEntity tutor = (TutorEntity) query.getSingleResult();
+        //return tutor;
+    }
 }
