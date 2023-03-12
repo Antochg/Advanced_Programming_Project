@@ -241,11 +241,11 @@
                     <div class="box_content">
                         <div class="attribute">
                             <span class="bold">Description de la mission</span>
-                            <textarea form="save-internship" name="missionDescription"></textarea>
+                            <textarea form="save-internship" name="missionDescription">${current_internship.getMissionDescription()}</textarea>
                         </div>
                         <div class="attribute">
                             <span class="bold">Commentaire</span>
-                            <textarea form="save-internship" name="comment"></textarea>
+                            <textarea form="save-internship" name="comment">${current_internship.getComments()}</textarea>
                         </div>
                         <div class="attribute">
                             <span class="bold">Remplir la fiche de visite</span>

@@ -65,6 +65,13 @@ public class InternshipEntity {
     @Column(name = "communication_note", nullable = true, precision = 2)
     private BigDecimal communicationNote;
 
+    @Basic
+    @Column(name = "mission_description", nullable = false, length = 255)
+    private String missionDescription;
+
+    @Basic
+    @Column(name = "comments", nullable = false, length = 255)
+    private String comments;
     @ManyToOne
     @JoinColumn(name="id_student")
     private StudentEntity student;
@@ -210,6 +217,8 @@ public class InternshipEntity {
             return false;
         if (communicationNote != null ? !communicationNote.equals(that.communicationNote) : that.communicationNote != null)
             return false;
+        if (missionDescription != null ? !missionDescription.equals(that.missionDescription) : that.missionDescription != null) return false;
+        if (comments != null ? !comments.equals(that.comments) : that.comments != null) return false;
 
         return true;
     }
@@ -230,6 +239,8 @@ public class InternshipEntity {
         result = 31 * result + (supervisor != null ? supervisor.hashCode() : 0);
         result = 31 * result + (technicalNote != null ? technicalNote.hashCode() : 0);
         result = 31 * result + (communicationNote != null ? communicationNote.hashCode() : 0);
+        result = 31 * result + (missionDescription != null ? missionDescription.hashCode() : 0);
+        result = 31 * result + (comments != null ? comments.hashCode() : 0);
         return result;
     }
 
@@ -247,5 +258,21 @@ public class InternshipEntity {
 
     public void setCompany(CompanyEntity company) {
         this.company = company;
+    }
+
+    public String getMissionDescription() {
+        return missionDescription;
+    }
+
+    public void setMissionDescription(String missionDescription) {
+        this.missionDescription = missionDescription;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }

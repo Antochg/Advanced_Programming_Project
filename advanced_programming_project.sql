@@ -45,6 +45,8 @@ CREATE TABLE IF NOT EXISTS Internship(
    supervisor VARCHAR(50) NOT NULL,
    technical_note DECIMAL(4,2),
    communication_note DECIMAL(4,2),
+   mission_description VARCHAR(255) NOT NULL,
+   comments VARCHAR(255) NOT NULL,
    id_company INT NOT NULL,
    id_student INT NOT NULL,
    PRIMARY KEY(id_internship),

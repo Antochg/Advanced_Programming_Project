@@ -58,6 +58,16 @@ public class InternshipSessionBean {
         entityManager.getTransaction().commit();
     }
 
+    public void editInternshipManagement(InternshipEntity internship, String missionDescription, String comment, HttpServletRequest request) {
+        entityManager.getTransaction().begin();
+
+        internship.setMissionDescription(missionDescription);
+        internship.setComments(comment);
+
+        entityManager.persist(internship);
+        entityManager.getTransaction().commit();
+    }
+
     public void addInternship(String internshipBeginDate, String internshipEndDate, String internshipSupervisor, StudentEntity student, CompanyEntity company, HttpServletRequest request){
         entityManager.getTransaction().begin();
 
