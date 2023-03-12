@@ -39,7 +39,13 @@
         </thead>
 
         <tbody>
-            <c:forEach items="${ allInterships }" var="internship">
+        <form class="filter" method="get" action="filter-internships">
+            <input type="text" id="search-field" name="name" placeholder="Search by student names">
+
+            <button type="submit">Search</button>
+        </form>
+
+        <c:forEach items="${ allInterships }" var="internship">
                 <input form="form-internships" type="hidden" name="internshipsIds" value="${internship.idInternship}">
                 <tr>
                     <td>
