@@ -16,6 +16,7 @@ import model.entity.TutorEntity;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 @WebServlet("/gestionServlet")
 public class GestionServlet extends HttpServlet {
@@ -29,7 +30,7 @@ public class GestionServlet extends HttpServlet {
         TutorEntity tutor = (TutorEntity) session.getAttribute("tutor");
 
         if(tutor != null){
-            Collection<InternshipEntity> interships = internshipSessionBean.getAllIntershipsByTutor(tutor.getIdTutor());
+            List<InternshipEntity> interships = internshipSessionBean.getAllIntershipsByTutor(tutor.getIdTutor());
             request.setAttribute("allInterships", interships);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/interships.jsp");
             dispatcher.forward(request, response);

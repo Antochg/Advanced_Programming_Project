@@ -5,7 +5,7 @@
          version="5.0">
 
     <servlet-mapping>
-        <servlet-name> helloServlet </servlet-name>
+        <servlet-name> indexServlet </servlet-name>
         <url-pattern>/ </url-pattern>
     </servlet-mapping>
 </web-app>
