@@ -6,6 +6,7 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Gestion étudiants</title>
 </head>
 <body>
@@ -35,7 +36,7 @@
             <th>Adresse</th>
             <th>Note technique</th>
             <th>Note communication</th>
-            <th></th>
+            <th>Détails</th>
         </thead>
 
         <tbody>
@@ -85,8 +86,12 @@
                         <input form="form-internships" type="hidden" name="internship_${internship.idInternship}_done" value="false">
                     </td>
                         <%-- Fin visite --%>
-                    <td>Debut</td>
-                    <td>Fin</td>
+                    <td>
+                        <input form="form-internships" type="date" name="internship_${internship.idInternship}_startDate" value="${internship.startDate}">
+                    </td>
+                    <td>
+                        <input form="form-internships" type="date" name="internship_${internship.idInternship}_endDate" value="${internship.endDate}">
+                    </td>
                     <td>Entr.</td>
                     <td>MdS</td>
                     <td>Adresse</td>

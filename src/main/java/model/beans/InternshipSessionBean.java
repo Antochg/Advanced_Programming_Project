@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import model.entity.InternshipEntity;
 import model.entity.StudentEntity;
 
+import java.sql.Date;
 import java.util.List;
 
 @Stateless
@@ -40,7 +41,8 @@ public class InternshipSessionBean {
             internship.setPresentation(Boolean.parseBoolean(request.getParameter("internship_" + internshipId + "_presentation")));
             internship.setPlanned(Boolean.parseBoolean(request.getParameter("internship_" + internshipId + "_planned")));
             internship.setDone(Boolean.parseBoolean(request.getParameter("internship_" + internshipId + "_done")));
-
+            internship.setStartDate(Date.valueOf(request.getParameter("internship_" + internshipId + "_startDate")));
+            internship.setEndDate(Date.valueOf(request.getParameter("internship_" + internshipId + "_endDate")));
         }
         entityManager.getTransaction().commit();
     }

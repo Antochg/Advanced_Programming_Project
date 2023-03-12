@@ -36,6 +36,5 @@ public class GestionServlet extends HttpServlet {
         } else {
             response.sendRedirect(request.getContextPath() + "/");
         }
-
     }
 }
