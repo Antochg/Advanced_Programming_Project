@@ -182,19 +182,19 @@
                         <img class="pfp" src="https://media.discordapp.net/attachments/1065177544556560394/1084136995359567962/image.png" alt="test">
                         <p class="attribute">
                             <span class="bold">Identifiant</span>
-                            <c:out>${requestScope.current_student.getIdStudent()}</c:out>
+                            <c:out>${current_student.getIdStudent()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Nom</span>
-                            <c:out>${requestScope.current_student.getLastname()}</c:out>
+                            <c:out>${current_student.getLastname()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Prénom</span>
-                            <c:out>${requestScope.current_student.getName()}</c:out>
+                            <c:out>${current_student.getName()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Group</span>
-                            <c:out>${requestScope.current_student.getLevel()}</c:out>
+                            <c:out>${current_student.getLevel()}</c:out>
                         </p>
                     </div>
                 </article>
@@ -203,22 +203,22 @@
                 <article class="box">
                     <h2 class="box_title">Détail de l'entreprise</h2>
                     <div class="box_content">
-                        <p class="company_name bold"><c:out>${requestScope.current_company.getName()}</c:out></p>
+                        <p class="company_name bold"><c:out>${current_company.getName()}</c:out></p>
                         <p class="attribute">
                             <span class="bold">Adresse de l'entreprise</span>
-                            <textarea placeholder="{CompanyAddress}" class="address_input">${requestScope.current_company.getAddress()}</textarea>
+                            <textarea form="save-internship" placeholder="{CompanyAddress}" class="address_input" name="companyAddress">${current_company.getAddress()}</textarea>
                         </p>
                         <p class="attribute">
                             <span class="bold">Maître d'apprentissage</span>
-                            <c:out>${requestScope.current_internship.getSupervisor()}</c:out>
+                            <c:out>${current_internship.getSupervisor()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Date de début</span>
-                            <c:out>${requestScope.current_internship.getStartDate()}</c:out>
+                            <c:out>${current_internship.getStartDate()}</c:out>
                         </p>
                         <p class="attribute">
                             <span class="bold">Date de fin</span>
-                            <c:out>${requestScope.current_internship.getEndDate()}</c:out>
+                            <c:out>${current_internship.getEndDate()}</c:out>
                         </p>
                     </div>
                 </article>
@@ -233,11 +233,11 @@
                     <div class="box_content">
                         <div class="attribute">
                             <span class="bold">Description de la mission</span>
-                            <textarea class></textarea>
+                            <textarea form="save-internship" name="missionDescription"></textarea>
                         </div>
                         <div class="attribute">
                             <span class="bold">Commentaire</span>
-                            <textarea></textarea>
+                            <textarea form="save-internship" name="comment"></textarea>
                         </div>
                         <div class="attribute">
                             <span class="bold">Remplir la fiche de visite</span>
@@ -249,6 +249,10 @@
             <button type="button" class="back_button">
                 <a class="back_button" href="${requestScope.back_path}">Retour</a>
             </button>
+            <form id="save-internship" method="POST" action="<%=request.getContextPath()%>/save-internship">
+                <input type="hidden" name="id" value="${current_internship.getIdInternship()}">
+                <button type="submit" class="back_button">Valider</button>
+            </form>
         </div>
     </div>
 </div>
