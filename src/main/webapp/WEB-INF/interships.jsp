@@ -19,15 +19,26 @@
         body {
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
+
         h2{
             display: flex;
             justify-content: center;
+            margin-bottom: 30px;
         }
         thead{visibility: hidden;}
         thead tr{
             height: 0px;
         }
         tbody{opacity: 1}
+        #search-field,.newStudent-field{
+            margin-left: 4%;
+            padding: 8px 12px;
+            border: white 1px solid;
+            border-radius: 4px;
+        }
+        .newStudent-field{
+            margin: 0;
+        }
         tr{
             display: flex;
             justify-content: center;
@@ -37,6 +48,7 @@
             margin-left: auto;
             margin-right: auto;
             border: white 1px solid;
+            border-radius: 4px;
             padding: 12px 12px;
             background-color: lavender;
         }
@@ -104,6 +116,11 @@
             margin-bottom: 30px;
             width: 10%;
         }
+        .btn--search{
+            margin-left: 4%;
+            padding: 4px 8px;
+            text-transform: uppercase;
+        }
         a{
             color: #4C489D;
             text-decoration: none;
@@ -114,6 +131,29 @@
 <body>
     <%@ include file="navbar.jsp" %>
     <h2>Tableau affichage étudiants</h2>
+
+    <form id="add-form-internships" method="post" action="add-internship" style="display:none; margin-left:4%;margin-bottom:10px;">
+        <label>Etudiant</label>
+        <input class="newStudent-field" form="add-form-internships" type="text" name="new_student_lastname" value="" placeholder="Nom">
+        <input class="newStudent-field" form="add-form-internships" type="text" name="new_student_name" value="" placeholder="Prénom">
+        <input class="newStudent-field" form="add-form-internships" type="text" name="new_student_group" value="" placeholder="Groupe">
+
+        <label>Entreprise</label>
+        <input class="newStudent-field" form="add-form-internships" type="text" name="new_company_name" value="" placeholder="Nom">
+        <input class="newStudent-field" form="add-form-internships" type="text" name="new_company_address" value="" placeholder="Adresse">
+        <br>
+
+        <label>Stage</label>
+        <input class="newStudent-field" form="add-form-internships" type="date" name="new_internship_begin_date" value="" placeholder="Date de début">
+        <input class="newStudent-field" form="add-form-internships" type="date" name="new_internship_end_date" value="" placeholder="Date de fin">
+        <input class="newStudent-field" form="add-form-internships" type="text" name="new_internship_supervisor" value="" placeholder="Maître de stage">
+        <br>
+        <button class="btn--search" type="submit" style="margin-left:0;margin-top: 10px;">Sauvegarder</button>
+    </form>
+
+    <button class="btn--search" type="button" onclick="showAddForm()">Ajouter un étudiant</button>
+    <br><br>
+    
     <table>
         <thead>
             <th>Groupe</th>
@@ -144,7 +184,7 @@
         <form class="filter" method="get" action="filter-internships">
             <input type="text" id="search-field" name="name" placeholder="Search by student names">
 
-            <button type="submit">Search</button>
+            <button class="btn--search" type="submit">Search</button>
         </form>
 
         <c:forEach items="${ allInterships }" var="internship">
@@ -246,24 +286,7 @@
         <button class="btn--save cta" type="submit">Save</button>
     </form>
 
-    <form id="add-form-internships" method="post" action="add-internship" style="display:none">
-        <label>Etudiant</label>
-        <input form="add-form-internships" type="text" name="new_student_lastname" value="" placeholder="Nom">
-        <input form="add-form-internships" type="text" name="new_student_name" value="" placeholder="Prénom">
-        <input form="add-form-internships" type="text" name="new_student_group" value="" placeholder="Groupe">
 
-        <label>Entreprise</label>
-        <input form="add-form-internships" type="text" name="new_company_name" value="" placeholder="Nom">
-        <input form="add-form-internships" type="text" name="new_company_address" value="" placeholder="Adresse">
-
-        <label>Stage</label>
-        <input form="add-form-internships" type="date" name="new_internship_begin_date" value="" placeholder="Date de début">
-        <input form="add-form-internships" type="date" name="new_internship_end_date" value="" placeholder="Date de fin">
-        <input form="add-form-internships" type="text" name="new_internship_supervisor" value="" placeholder="Maître de stage">
-        <button type="submit">Sauvegarder</button>
-    </form>
-
-    <button type="button" onclick="showAddForm()">Ajouter un étudiant</button>
 
 </body>
 </html>
