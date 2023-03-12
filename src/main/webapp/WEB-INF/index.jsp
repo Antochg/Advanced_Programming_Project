@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Login page</title>
     <style>
         * {
             box-sizing: border-box;
@@ -97,10 +97,6 @@
             border-color: #6A679E;
             outline: none;
         }
-
-        .button__text{
-            text-decoration-line: none;
-        }
     </style>
 </head>
 <body>
@@ -114,10 +110,7 @@
                 <div class="login__field">
                     <input type="password" name="password" class="login__input" placeholder="Password">
                 </div>
-                <input type="submit" value="Log In" />
-<%--                <button class="button login__submit">--%>
-<%--                    <a class="button__text" href="login">Log In Now</a>--%>
-<%--                </button>--%>
+                <input class="button login__submit" type="submit" value="Log In" />
             </form>
         </div>
     </div>
