@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Detail - {Student}</title>
+    <title>Detail - ${current_student.getName()}</title>
     <style>
         * {
             box-sizing: border-box;
@@ -22,6 +22,14 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+        }
+
+        .button_container {
+            display:flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .screen {
@@ -145,7 +153,7 @@
             border-top: 1px solid #ccc;
         }
 
-        .back_button {
+        .button {
             display: flex;
             width: 60px;
             height: 20px;
@@ -154,14 +162,14 @@
             background-color: transparent;
             text-align: center;
             border: none;
-            margin: auto;
+            text-decoration: none;
         }
 
-        .back_button:hover {
+        .button:hover {
             opacity: 70%;
         }
 
-        .back_button:active {
+        .button:active {
             opacity: 40%;
         }
     </style>
@@ -246,13 +254,15 @@
                     </div>
                 </article>
             </section>
-            <button type="button" class="back_button">
-                <a class="back_button" href="${requestScope.back_path}">Retour</a>
-            </button>
-            <form id="save-internship" method="POST" action="<%=request.getContextPath()%>/save-internship">
-                <input type="hidden" name="id" value="${current_internship.getIdInternship()}">
-                <button type="submit" class="back_button">Valider</button>
-            </form>
+            <div class="button_container">
+                <button type="button" class="button">
+                    <a class="button" href="${requestScope.back_path}">Retour</a>
+                </button>
+                <form id="save-internship" method="POST" action="<%=request.getContextPath()%>/save-internship">
+                    <input type="hidden" name="id" value="${current_internship.getIdInternship()}">
+                    <button type="submit" class="button">Valider</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
