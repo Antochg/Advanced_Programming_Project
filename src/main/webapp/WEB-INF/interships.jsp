@@ -10,10 +10,8 @@
     <title>Gestion étudiants</title>
 </head>
 <body>
+    <%@ include file="navbar.jsp" %>
     <h2>Tableau affichage étudiants</h2>
-    <button class="">
-        <a class="" href="logout">Logout</a>
-    </button>
     <table>
         <thead>
             <th>Groupe</th>
@@ -36,7 +34,8 @@
             <th>Adresse</th>
             <th>Note technique</th>
             <th>Note communication</th>
-            <th>Détails</th>
+            <th></th>
+            <th></th>
         </thead>
 
         <tbody>
@@ -97,9 +96,19 @@
                     <td>Adresse</td>
                     <td>Note technique</td>
                     <td>Note communication</td>
-                    <button>
-                        <a class="" href="internship/${internship.idInternship}">Accéder</a>
-                    </button>
+                    <td>
+                        <button>
+                            <a class="" href="internship/${internship.idInternship}">Accéder</a>
+                        </button>
+                    </td>
+                    <td>
+                        <form method="post" action="delete-internship">
+                            <input type="hidden" name="internship_delete" value="${internship.idInternship}">
+                            <button type="submit">
+                                Supprimer
+                            </button>
+                        </form>
+                    </td>
                </tr>
             </c:forEach>
         </tbody>

@@ -1,5 +1,5 @@
 <%@ page import="model.entity.StudentEntity" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html>
@@ -167,6 +167,7 @@
     </style>
 </head>
 <body>
+<%@ include file="navbar.jsp" %>
 <div class="container">
     <div class="screen">
         <div class="screen__content">

@@ -56,4 +56,18 @@ public class InternshipSessionBean {
         }
         entityManager.getTransaction().commit();
     }
+
+    public boolean deleteInternship(int internshipId) {
+        entityManager.getTransaction().begin();
+        InternshipEntity internship = entityManager.find(InternshipEntity.class, internshipId);
+
+        if(internship != null){
+            entityManager.remove(internship);
+            entityManager.getTransaction().commit();
+            return true;
+        } else {
+            entityManager.getTransaction().rollback();
+            return false;
+        }
+    }
 }
